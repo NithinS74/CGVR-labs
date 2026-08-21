@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/opengl_demo.dir/link.d CMakeFiles/opengl_demo.dir/main.cpp.o -o opengl_demo  /usr/lib/libglfw.so.3.5 /usr/lib/libglm.a /usr/lib/libepoxy.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so

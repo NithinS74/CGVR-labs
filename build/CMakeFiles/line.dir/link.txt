@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/line.dir/link.d CMakeFiles/line.dir/line.cpp.o -o line  /usr/lib/libglfw.so.3.5 /usr/lib/libglm.a /usr/lib/libepoxy.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so

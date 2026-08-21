@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/donut.dir/link.d CMakeFiles/donut.dir/donut.cpp.o -o donut  /usr/lib/libglfw.so.3.5 /usr/lib/libglm.a /usr/lib/libepoxy.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so
