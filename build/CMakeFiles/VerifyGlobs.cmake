@@ -5,10 +5,12 @@
 file(GLOB NEW_GLOB LIST_DIRECTORIES true "/home/nithin/code/opengl/*.cpp")
 set(OLD_GLOB
   "/home/nithin/code/opengl/bline.cpp"
+  "/home/nithin/code/opengl/dda.cpp"
   "/home/nithin/code/opengl/donut.cpp"
   "/home/nithin/code/opengl/line.cpp"
   "/home/nithin/code/opengl/main.cpp"
   "/home/nithin/code/opengl/midpoint_circle.cpp"
+  "/home/nithin/code/opengl/triangle.cpp"
   )
 if(NOT "${NEW_GLOB}" STREQUAL "${OLD_GLOB}")
   message("-- GLOB mismatch!")

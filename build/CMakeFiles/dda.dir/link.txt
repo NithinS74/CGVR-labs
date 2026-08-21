@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/dda.dir/link.d CMakeFiles/dda.dir/dda.cpp.o -o dda  /usr/lib/libglfw.so.3.5 /usr/lib/libglm.a /usr/lib/libepoxy.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so

@@ -1,7 +1,9 @@
 /home/nithin/code/opengl/build/CMakeFiles/bline.dir
+/home/nithin/code/opengl/build/CMakeFiles/dda.dir
 /home/nithin/code/opengl/build/CMakeFiles/donut.dir
 /home/nithin/code/opengl/build/CMakeFiles/line.dir
 /home/nithin/code/opengl/build/CMakeFiles/main.dir
 /home/nithin/code/opengl/build/CMakeFiles/midpoint_circle.dir
+/home/nithin/code/opengl/build/CMakeFiles/triangle.dir
 /home/nithin/code/opengl/build/CMakeFiles/edit_cache.dir
 /home/nithin/code/opengl/build/CMakeFiles/rebuild_cache.dir

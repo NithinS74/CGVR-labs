@@ -64,18 +64,22 @@ CMAKE_BINARY_DIR = /home/nithin/code/opengl/build
 
 # The main recursive "all" target.
 all: CMakeFiles/bline.dir/all
+all: CMakeFiles/dda.dir/all
 all: CMakeFiles/donut.dir/all
 all: CMakeFiles/line.dir/all
 all: CMakeFiles/main.dir/all
 all: CMakeFiles/midpoint_circle.dir/all
+all: CMakeFiles/triangle.dir/all
 .PHONY : all
 
 # The main recursive "codegen" target.
 codegen: CMakeFiles/bline.dir/codegen
+codegen: CMakeFiles/dda.dir/codegen
 codegen: CMakeFiles/donut.dir/codegen
 codegen: CMakeFiles/line.dir/codegen
 codegen: CMakeFiles/main.dir/codegen
 codegen: CMakeFiles/midpoint_circle.dir/codegen
+codegen: CMakeFiles/triangle.dir/codegen
 .PHONY : codegen
 
 # The main recursive "preinstall" target.
@@ -84,10 +88,12 @@ preinstall:
 
 # The main recursive "clean" target.
 clean: CMakeFiles/bline.dir/clean
+clean: CMakeFiles/dda.dir/clean
 clean: CMakeFiles/donut.dir/clean
 clean: CMakeFiles/line.dir/clean
 clean: CMakeFiles/main.dir/clean
 clean: CMakeFiles/midpoint_circle.dir/clean
+clean: CMakeFiles/triangle.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -123,13 +129,45 @@ CMakeFiles/bline.dir/clean:
 .PHONY : CMakeFiles/bline.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/dda.dir
+
+# All Build rule for target.
+CMakeFiles/dda.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=3,4 "Built target dda"
+.PHONY : CMakeFiles/dda.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/dda.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nithin/code/opengl/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/dda.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nithin/code/opengl/build/CMakeFiles 0
+.PHONY : CMakeFiles/dda.dir/rule
+
+# Convenience name for target.
+dda: CMakeFiles/dda.dir/rule
+.PHONY : dda
+
+# codegen rule for target.
+CMakeFiles/dda.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=3,4 "Finished codegen for target dda"
+.PHONY : CMakeFiles/dda.dir/codegen
+
+# clean rule for target.
+CMakeFiles/dda.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/clean
+.PHONY : CMakeFiles/dda.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/donut.dir
 
 # All Build rule for target.
 CMakeFiles/donut.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/donut.dir/build.make CMakeFiles/donut.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/donut.dir/build.make CMakeFiles/donut.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=3,4 "Built target donut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=5,6 "Built target donut"
 .PHONY : CMakeFiles/donut.dir/all
 
 # Build rule for subdir invocation for target.
@@ -146,7 +184,7 @@ donut: CMakeFiles/donut.dir/rule
 # codegen rule for target.
 CMakeFiles/donut.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/donut.dir/build.make CMakeFiles/donut.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=3,4 "Finished codegen for target donut"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=5,6 "Finished codegen for target donut"
 .PHONY : CMakeFiles/donut.dir/codegen
 
 # clean rule for target.
@@ -161,7 +199,7 @@ CMakeFiles/donut.dir/clean:
 CMakeFiles/line.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=5,6 "Built target line"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=7,8 "Built target line"
 .PHONY : CMakeFiles/line.dir/all
 
 # Build rule for subdir invocation for target.
@@ -178,7 +216,7 @@ line: CMakeFiles/line.dir/rule
 # codegen rule for target.
 CMakeFiles/line.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/line.dir/build.make CMakeFiles/line.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=5,6 "Finished codegen for target line"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=7,8 "Finished codegen for target line"
 .PHONY : CMakeFiles/line.dir/codegen
 
 # clean rule for target.
@@ -193,7 +231,7 @@ CMakeFiles/line.dir/clean:
 CMakeFiles/main.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=7,8 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=9,10 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -210,7 +248,7 @@ main: CMakeFiles/main.dir/rule
 # codegen rule for target.
 CMakeFiles/main.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=7,8 "Finished codegen for target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=9,10 "Finished codegen for target main"
 .PHONY : CMakeFiles/main.dir/codegen
 
 # clean rule for target.
@@ -225,7 +263,7 @@ CMakeFiles/main.dir/clean:
 CMakeFiles/midpoint_circle.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=9,10 "Built target midpoint_circle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=11,12 "Built target midpoint_circle"
 .PHONY : CMakeFiles/midpoint_circle.dir/all
 
 # Build rule for subdir invocation for target.
@@ -242,13 +280,45 @@ midpoint_circle: CMakeFiles/midpoint_circle.dir/rule
 # codegen rule for target.
 CMakeFiles/midpoint_circle.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=9,10 "Finished codegen for target midpoint_circle"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=11,12 "Finished codegen for target midpoint_circle"
 .PHONY : CMakeFiles/midpoint_circle.dir/codegen
 
 # clean rule for target.
 CMakeFiles/midpoint_circle.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/clean
 .PHONY : CMakeFiles/midpoint_circle.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/triangle.dir
+
+# All Build rule for target.
+CMakeFiles/triangle.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=13,14 "Built target triangle"
+.PHONY : CMakeFiles/triangle.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/triangle.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nithin/code/opengl/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/triangle.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/nithin/code/opengl/build/CMakeFiles 0
+.PHONY : CMakeFiles/triangle.dir/rule
+
+# Convenience name for target.
+triangle: CMakeFiles/triangle.dir/rule
+.PHONY : triangle
+
+# codegen rule for target.
+CMakeFiles/triangle.dir/codegen:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/codegen
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/nithin/code/opengl/build/CMakeFiles --progress-num=13,14 "Finished codegen for target triangle"
+.PHONY : CMakeFiles/triangle.dir/codegen
+
+# clean rule for target.
+CMakeFiles/triangle.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/clean
+.PHONY : CMakeFiles/triangle.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -1,0 +1,1 @@
+/usr/sbin/c++ -Wl,--dependency-file=CMakeFiles/triangle.dir/link.d CMakeFiles/triangle.dir/triangle.cpp.o -o triangle  /usr/lib/libglfw.so.3.5 /usr/lib/libglm.a /usr/lib/libepoxy.so /usr/lib/libGLX.so /usr/lib/libOpenGL.so

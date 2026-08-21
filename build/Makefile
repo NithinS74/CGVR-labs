@@ -131,6 +131,19 @@ bline/fast:
 .PHONY : bline/fast
 
 #=============================================================================
+# Target rules for targets named dda
+
+# Build rule for target.
+dda: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 dda
+.PHONY : dda
+
+# fast build rule for target.
+dda/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/build
+.PHONY : dda/fast
+
+#=============================================================================
 # Target rules for targets named donut
 
 # Build rule for target.
@@ -182,6 +195,19 @@ midpoint_circle/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/build
 .PHONY : midpoint_circle/fast
 
+#=============================================================================
+# Target rules for targets named triangle
+
+# Build rule for target.
+triangle: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 triangle
+.PHONY : triangle
+
+# fast build rule for target.
+triangle/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/build
+.PHONY : triangle/fast
+
 bline.o: bline.cpp.o
 .PHONY : bline.o
 
@@ -205,6 +231,30 @@ bline.s: bline.cpp.s
 bline.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/bline.dir/build.make CMakeFiles/bline.dir/bline.cpp.s
 .PHONY : bline.cpp.s
+
+dda.o: dda.cpp.o
+.PHONY : dda.o
+
+# target to build an object file
+dda.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/dda.cpp.o
+.PHONY : dda.cpp.o
+
+dda.i: dda.cpp.i
+.PHONY : dda.i
+
+# target to preprocess a source file
+dda.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/dda.cpp.i
+.PHONY : dda.cpp.i
+
+dda.s: dda.cpp.s
+.PHONY : dda.s
+
+# target to generate assembly for a file
+dda.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/dda.dir/build.make CMakeFiles/dda.dir/dda.cpp.s
+.PHONY : dda.cpp.s
 
 donut.o: donut.cpp.o
 .PHONY : donut.o
@@ -302,6 +352,30 @@ midpoint_circle.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/midpoint_circle.dir/build.make CMakeFiles/midpoint_circle.dir/midpoint_circle.cpp.s
 .PHONY : midpoint_circle.cpp.s
 
+triangle.o: triangle.cpp.o
+.PHONY : triangle.o
+
+# target to build an object file
+triangle.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/triangle.cpp.o
+.PHONY : triangle.cpp.o
+
+triangle.i: triangle.cpp.i
+.PHONY : triangle.i
+
+# target to preprocess a source file
+triangle.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/triangle.cpp.i
+.PHONY : triangle.cpp.i
+
+triangle.s: triangle.cpp.s
+.PHONY : triangle.s
+
+# target to generate assembly for a file
+triangle.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/triangle.dir/build.make CMakeFiles/triangle.dir/triangle.cpp.s
+.PHONY : triangle.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -311,13 +385,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... bline"
+	@echo "... dda"
 	@echo "... donut"
 	@echo "... line"
 	@echo "... main"
 	@echo "... midpoint_circle"
+	@echo "... triangle"
 	@echo "... bline.o"
 	@echo "... bline.i"
 	@echo "... bline.s"
+	@echo "... dda.o"
+	@echo "... dda.i"
+	@echo "... dda.s"
 	@echo "... donut.o"
 	@echo "... donut.i"
 	@echo "... donut.s"
@@ -330,6 +409,9 @@ help:
 	@echo "... midpoint_circle.o"
 	@echo "... midpoint_circle.i"
 	@echo "... midpoint_circle.s"
+	@echo "... triangle.o"
+	@echo "... triangle.i"
+	@echo "... triangle.s"
 .PHONY : help
 
 

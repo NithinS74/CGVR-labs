@@ -68,8 +68,10 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/bline.dir/DependInfo.cmake"
+  "CMakeFiles/dda.dir/DependInfo.cmake"
   "CMakeFiles/donut.dir/DependInfo.cmake"
   "CMakeFiles/line.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"
   "CMakeFiles/midpoint_circle.dir/DependInfo.cmake"
+  "CMakeFiles/triangle.dir/DependInfo.cmake"
   )
