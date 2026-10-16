@@ -10,7 +10,7 @@ find_package(glfw3 REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(glm REQUIRED)
 
-file(GLOB CPP_FILES CONFIGURE_DEPENDS "*.cpp")
+file(GLOB CPP_FILES CONFIGURE_DEPENDS "labs/*.cpp")
 
 # 2. Loop through each file and create an executable
 foreach(SOURCE_FILE ${CPP_FILES})
