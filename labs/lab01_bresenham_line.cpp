@@ -9,6 +9,7 @@
 #include <cmath>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 // --- 1. SHADERS ---
 const char *vertexShaderSource = R"(
@@ -17,7 +18,7 @@ layout (location = 0) in vec2 aPos;
 uniform mat4 projection;
 void main() {
     gl_Position = projection * vec4(aPos, 0.0, 1.0);
-    gl_PointSize = 5.0; // FIX: Explicitly set point size in the shader
+    gl_PointSize = 5.0;
 }
 )";
 
@@ -25,15 +26,16 @@ const char *fragmentShaderSource = R"(
 #version 330 core
 out vec4 FragColor;
 void main() {
-    FragColor = vec4(0.0, 1.0, 0.5, 1.0); // Neon Green pixels
+    FragColor = vec4(0.0, 1.0, 0.5, 1.0);
 }
 )";
 
-// --- 2. BRESENHAM'S ALGORITHM ---
+// --- 2. POINT STRUCT ---
 struct Point {
   int x, y;
 };
 
+// --- 3. BRESENHAM'S ALGORITHM ---
 std::vector<Point> getBresenhamLine(int x0, int y0, int x1, int y1) {
   std::vector<Point> linePoints;
   int dx = std::abs(x1 - x0);
@@ -61,7 +63,30 @@ std::vector<Point> getBresenhamLine(int x0, int y0, int x1, int y1) {
   return linePoints;
 }
 
-// --- 3. HELPER FUNCTIONS ---
+// --- 4. DDA ALGORITHM ---
+std::vector<Point> getDDALine(int x0, int y0, int x1, int y1) {
+  std::vector<Point> linePoints;
+
+  int dx = x1 - x0;
+  int dy = y1 - y0;
+  int steps = std::max(std::abs(dx), std::abs(dy));
+
+  float xInc = (steps == 0) ? 0.0f : static_cast<float>(dx) / static_cast<float>(steps);
+  float yInc = (steps == 0) ? 0.0f : static_cast<float>(dy) / static_cast<float>(steps);
+
+  float x = static_cast<float>(x0);
+  float y = static_cast<float>(y0);
+
+  for (int i = 0; i <= steps; ++i) {
+    linePoints.push_back({static_cast<int>(std::round(x)), static_cast<int>(std::round(y))});
+    x += xInc;
+    y += yInc;
+  }
+
+  return linePoints;
+}
+
+// --- 5. HELPER FUNCTIONS ---
 GLuint compileShader(GLenum type, const char *source) {
   GLuint shader = glCreateShader(type);
   glShaderSource(shader, 1, &source, nullptr);
@@ -81,7 +106,7 @@ GLuint createProgram(const char *vSource, const char *fSource) {
   return prog;
 }
 
-// --- 4. MAIN PROGRAM ---
+// --- 6. MAIN PROGRAM ---
 int main() {
   if (!glfwInit())
     return -1;
@@ -89,58 +114,57 @@ int main() {
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-  // Create Window
   const int WINDOW_WIDTH = 800;
   const int WINDOW_HEIGHT = 600;
-  GLFWwindow *window =
-      glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,
-                       "Bresenham's Line Algorithm", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(WINDOW_WIDTH, WINDOW_HEIGHT,
+                                        "Lab01: Bresenham + DDA Line", nullptr, nullptr);
   if (!window) {
     glfwTerminate();
     return -1;
   }
   glfwMakeContextCurrent(window);
 
-  GLuint shaderProgram =
-      createProgram(vertexShaderSource, fragmentShaderSource);
+  GLuint shaderProgram = createProgram(vertexShaderSource, fragmentShaderSource);
 
-  // Generate line points using Bresenham's Algorithm
-  std::vector<Point> points = getBresenhamLine(100, 100, 700, 500);
+  // Demonstrate both algorithms
+  std::vector<Point> bresenhamPoints = getBresenhamLine(100, 500, 700, 100);
+  std::vector<Point> ddaPoints = getDDALine(100, 500, 700, 100);
 
-  // Convert Points to float array for OpenGL
-  std::vector<float> vertices;
-  for (const auto &p : points) {
-    vertices.push_back((float)p.x);
-    vertices.push_back((float)p.y);
+  std::cout << "Bresenham points count: " << bresenhamPoints.size() << std::endl;
+  std::cout << "DDA points count: " << ddaPoints.size() << std::endl;
+
+  // Combine points for visual demonstration (offset DDA slightly to show difference)
+  std::vector<Point> combinedPoints = bresenhamPoints;
+  for (const auto &p : ddaPoints) {
+    combinedPoints.push_back({p.x, p.y + 10});
   }
 
-  // Setup VAO and VBO
+  std::vector<float> vertices;
+  for (const auto &p : combinedPoints) {
+    vertices.push_back(static_cast<float>(p.x));
+    vertices.push_back(static_cast<float>(p.y));
+  }
+
   GLuint VAO, VBO;
   glGenVertexArrays(1, &VAO);
   glGenBuffers(1, &VBO);
 
   glBindVertexArray(VAO);
   glBindBuffer(GL_ARRAY_BUFFER, VBO);
-  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float),
-               vertices.data(), GL_STATIC_DRAW);
+  glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), vertices.data(), GL_STATIC_DRAW);
 
   glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void *)0);
   glEnableVertexAttribArray(0);
 
-  // Tell OpenGL we want to control point size from the Vertex Shader
   glEnable(GL_PROGRAM_POINT_SIZE);
 
-  // Setup an orthographic projection matrix (1 unit = 1 pixel)
-  glm::mat4 projection = glm::ortho(0.0f, (float)WINDOW_WIDTH, 0.0f,
-                                    (float)WINDOW_HEIGHT, -1.0f, 1.0f);
+  glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(WINDOW_WIDTH), 0.0f,
+                                    static_cast<float>(WINDOW_HEIGHT), -1.0f, 1.0f);
 
-  // Render Loop
   while (!glfwWindowShouldClose(window)) {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
       glfwSetWindowShouldClose(window, true);
 
-    // FIX: Ensure the viewport matches the actual screen pixel density (for
-    // High-DPI displays)
     int display_w, display_h;
     glfwGetFramebufferSize(window, &display_w, &display_h);
     glViewport(0, 0, display_w, display_h);
@@ -153,8 +177,6 @@ int main() {
                        GL_FALSE, glm::value_ptr(projection));
 
     glBindVertexArray(VAO);
-
-    // Draw the line as individual points
     glDrawArrays(GL_POINTS, 0, vertices.size() / 2);
 
     glfwSwapBuffers(window);
